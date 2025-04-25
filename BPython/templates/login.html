@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập - Quản lý thú cưng</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff8f0;
+      padding: 0 2rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #ff914d;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .logo::before {
+      content: "🐾";
+      margin-right: 10px;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .navbar a:hover {
+      opacity: 0.8;
+    }
+
+    /* Form */
+    .form-container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 3rem auto;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #ff914d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .form-container button:hover {
+      background-color: #e77b39;
+    }
+
+    .form-container p {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .form-container p a {
+      text-decoration: none;
+      color: #ff914d;
+    }
+  </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">PetCare</div>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Trang chủ</a></li>
+      <li><a href="{{ url_for('register') }}">Đăng ký</a></li>
+    </ul>
+  </nav>
+
+  <!-- Form Đăng nhập -->
+  <div class="form-container">
+    <h2>Đăng nhập</h2>
+    <form method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Mật khẩu" required>
+        <button type="submit">Đăng nhập</button>
+      </form>      
+    <p>Chưa có tài khoản? <a href="{{ url_for('register') }}">Đăng ký</a></p>
+  </div>
+
+</body>
+</html>

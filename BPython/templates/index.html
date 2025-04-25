@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quản lý thú cưng</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff8f0;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #ff914d;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .logo::before {
+      content: "🐾";
+      margin-right: 10px;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: opacity 0.3s;
+    }
+
+    .navbar a:hover {
+      opacity: 0.8;
+    }
+
+    /* Main content */
+    .main {
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .main h1 {
+      font-size: 2.8rem;
+      color: #333;
+    }
+
+    .main p {
+      font-size: 1.3rem;
+      color: #666;
+      margin-top: 1rem;
+    }
+
+    .main img {
+      width: 300px;
+      margin-top: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .main img {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">PetCare</div>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Trang chủ</a></li>
+      <li><a href="{{ url_for('register') }}">Đăng ký</a></li>
+      <li><a href="{{ url_for('login') }}">Đăng nhập</a></li>
+    </ul>
+  </nav>
+
+  <!-- Nội dung chính -->
+  <div class="main">
+    <h1>Chào mừng đến với hệ thống quản lý thú cưng!</h1>
+    <p>Quản lý thông tin thú cưng, lịch tiêm phòng, sổ khám và nhiều hơn nữa.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Icon">
+  </div>
+
+</body>
+</html>
