@@ -56,7 +56,8 @@ class User(db.Model, UserMixin):
     role = db.Column(db.Integer, default=2)  # 1 = admin, 2 = user
     
     def __repr__(self):
-        return f'<User {self.username}>'
+        return f'<User {self.email}>'
+
 
 class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -128,9 +129,13 @@ def login():
             session['role'] = user.role
             flash('Đăng nhập thành công!', 'success')
 
-            # Nếu là admin thì chuyển vào admin_dashboard luô
+    # Nếu là admin thì chuyển vào admin_dashboard
             if user.role == 1:
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('dashboard'))  # Sửa lại route đúng
+
+    # Nếu là người dùng bình thường thì vào dashboard
+            return redirect(url_for('dashboard'))  # ✅ Thêm dòng này
+
 
         flash('Sai email hoặc mật khẩu.', 'error')
         return redirect(url_for('login'))
